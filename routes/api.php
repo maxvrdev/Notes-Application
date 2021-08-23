@@ -17,3 +17,19 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+/*
+|--------------------------------------------------------------------------
+| Versioned API Routes
+|--------------------------------------------------------------------------
+*/
+
+Route::group([
+    'prefix' => 'v1',
+    'namespace' => 'App\Http\Controllers\Api\V1',
+    'as' => 'api.v1.',
+    'middleware' => ['auth:api'],
+], function () {
+    return require __DIR__ . '/api/v1.php';
+});
