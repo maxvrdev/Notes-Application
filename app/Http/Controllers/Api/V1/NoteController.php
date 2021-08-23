@@ -4,75 +4,83 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use App\Models\Note;
-use Illuminate\Http\JsonResponse;
+use App\Http\Resources\NoteResource;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 
 class NoteController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return Note::all();
+        $notes = Note::all();
+        return response([ 'notes' => NoteResource::collection($notes), 'message' => 'Retrieved successfully'], 200);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
-     *
-     * @return JsonResponse
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $note = new Note();
-        $note->fill($request->only($note->getFillable()));
-        $note->save();
+        $data = $request->all();
 
-        return response()->json($note, 201);
+        $validator = Validator::make($data, [
+            'user_id'=>'required|max:1000',
+            'title' =>'max:50',
+            'note' =>'max:1000',
+        ]);
+
+        if ($validator->fails()) {
+            return response(['error' => $validator->errors(), 'Validation Error']);
+        }
+
+        $note = Note::create($data);
+
+        return response(['note' => new NoteResource($note), 'message' => 'Created successfully'], 201);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return Response
+     * @param  \App\Models\Note  $note
+     * @return \Illuminate\Http\Response
      */
     public function show(Note $note)
     {
-        return $note;
+        return response(['note' => new NoteResource($note), 'message' => 'Retrieved successfully'], 200);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
-     * @param Note    $note
-     *
-     * @return Response
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Note  $note
+     * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Note $note)
     {
         $note->update($request->all());
 
-        return response()->json($note, 200);
+        return response(['note' => new NoteResource($note), 'message' => 'Update successfully'], 200);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Note $note
-     *
-     * @return JsonResponse
+     * @param  \App\Models\Note  $note
+     * @return \Illuminate\Http\Response
      */
     public function destroy(Note $note)
     {
         $note->delete();
 
-        return response()->json(null, 204);
+        return response(['message' => 'Deleted']);
     }
 }

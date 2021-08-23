@@ -29,7 +29,7 @@ class NoteController extends Controller
     {
         $users = User::all();
 
-        return view('notes.create', compact('users'));
+        return view('notes.create',  compact('users'));
     }
 
     /**
