@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\NoteController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,8 +20,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
+Route::resource('notes', NoteController::class)->middleware(['auth']);
+Route::resource('users', UserController::class)->middleware(['auth']);
 
 require __DIR__.'/auth.php';
