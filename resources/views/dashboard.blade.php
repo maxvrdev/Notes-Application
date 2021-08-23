@@ -19,11 +19,29 @@
                 <div>
                     <div class="md:grid md:grid-cols-2 hover:bg-gray-50 md:space-y-0 space-y-1 p-4 border-b">
                         <p class="text-gray-600">
-                            PHP MVC Framework
+                            Stack:
                         </p>
                         <p>
-                            Laravel
+                            Laravel, Tailwind, Alpine, Livewire, Passport
                         </p>
+                    </div>
+                    <div class="md:grid md:grid-cols-2 hover:bg-gray-50 md:space-y-0 space-y-1 p-4 border-b">
+                        <p class="text-gray-600">
+                            How to use:
+                        </p>
+                        <p>
+                            The <strong>Users</strong> page will list all of the system users. On this page, click on the <strong>Add Note</strong> buttons next to the respective user. This will allow you to create a note assigned to that user. Any notes created for your user will be listed in the Notes column, next to your user.
+                            <br><br>
+                            The <strong>Notes</strong> page will list all of the Notes assigned to the current authenticated user. Here, you can Edit or Delete notes.
+                        </p>
+                    </div>
+                    <div class="md:grid md:grid-cols-2 hover:bg-gray-50 md:space-y-0 space-y-1 p-4 border-b">
+                        <p class="text-gray-600">
+                            Notes:
+                        </p>
+                        <ul class="list-disc">
+                            <li>Run php <code class="bg-opacity-20 bg-blue-400" >artisan db:seed</code> to create additional users.</li>
+                        </ul>
                     </div>
                     <div class="md:grid md:grid-cols-2 hover:bg-gray-50 md:space-y-0 space-y-1 p-4">
                         <p class="text-gray-600">
