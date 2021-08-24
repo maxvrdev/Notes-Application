@@ -56,7 +56,7 @@
                                 User Login
                             </span>
                                 </div>
-                                <a href="{{ url('api/login') }}" class="text-purple-700 hover:underline">
+                                <p class="text-info">
                                     api/login
                                 </a>
                             </div>
@@ -69,7 +69,7 @@
                                 Register User
                             </span>
                                 </div>
-                                <a href="{{ url('api/login') }}" class="text-purple-700 hover:underline">
+                                <p class="text-info">
                                     api/register
                                 </a>
                             </div>
@@ -82,7 +82,7 @@
                                 View Notes
                             </span>
                                 </div>
-                                <a href="{{ url('api/login') }}" class="text-purple-700 hover:underline">
+                                <p class="text-info">
                                     api/v1/notes
                                 </a>
                             </div>
@@ -95,7 +95,31 @@
                                 View Note
                             </span>
                                 </div>
-                                <a href="{{ url('api/login') }}" class="text-purple-700 hover:underline">
+                                <p class="text-info">
+                                    api/v1/notes/{note}
+                                </a>
+                            </div>
+                            <div class="border-2 flex items-center p-2 rounded justify-between space-x-2">
+                                <div class="space-x-2 truncate">
+                                    <span
+                                        class="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-blue-100 bg-blue-600 rounded-full">POST</span>
+                                    <span>
+                                Create Note
+                            </span>
+                                </div>
+                                <p class="text-info">
+                                    api/v1/notes
+                                </a>
+                            </div>
+                            <div class="border-2 flex items-center p-2 rounded justify-between space-x-2">
+                                <div class="space-x-2 truncate">
+                                    <span
+                                        class="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-blue-100 bg-blue-600 rounded-full">PUT</span>
+                                    <span>
+                                Update Note
+                            </span>
+                                </div>
+                                <p class="text-info">
                                     api/v1/notes/{note}
                                 </a>
                             </div>
